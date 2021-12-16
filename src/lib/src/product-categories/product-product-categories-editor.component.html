@@ -1,0 +1,13 @@
+<div>
+    <div *ngFor="let productCategory of productCategories" class="row">
+
+        <div class="col-xs-12 product-category-div">
+            <span class="product-category-name">{{productCategory.Key}}&nbsp;&nbsp;</span>
+            <input id="{{productCategory.Key}}-checkbox" type="checkbox" [checked]="productCategoryChecks[productCategory.Key]" (change)="toggleProductHasCategory(productCategory.Key)"> 
+        </div>
+
+    </div>
+
+    <button (click)="goBack()">Back</button>
+
+</div>

@@ -1,0 +1,14 @@
+      <my-nav></my-nav>
+      <main class="container-fluid">
+        <router-outlet (activate)="componentAdded($event)" (deactivate)="componentRemoved($event)"></router-outlet>
+      </main>
+      <footer class="navbar navbar-default navbar-fixed-bottom">
+        <div [hidden]="currentPage != 'Home'">
+          Category:
+          <select id="categorySelect" name="categorySelect">
+              <option value="All">All</option>
+              <option *ngFor="let productCategory of productCategories" value="{{productCategory.Key}}">{{productCategory.Key}}</option>
+            </select>
+        </div>
+        <a [href]="url">All Products Gone Viral</a>
+      </footer>

@@ -1,0 +1,76 @@
+﻿<div class="cart">
+  <h2>Checkout</h2>
+
+  <!--<ul class="cart-items">
+    <li *ngFor="let cartItem of cartItems">
+      <span>{{cartItem.product.name}} ${{cartItem.product.price}} Qty:{{cartItem.quantity}} SubTotal:{{cartItem.quantity * cartItem.product.price}}</span><button (click)="removeProduct(cartItem.index)" style="font-weight:bold">X</button>
+    </li>
+  </ul>
+  <span style="font-weight:bold;font-style:italic">Total Before Tax:{{cartGrandTotal}}</span><br />
+  <span style="font-size:smaller;font-style:italic">Taxes will be calculated based on your address after you enter shipping information.</span><br />
+
+  <button (click)="goBack()">Back</button>
+  <button (click)="checkout()">(C|c)heckout</button>-->
+
+
+  <label for="amount">Checkout Amount</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.total_before_tax" type="text" id="grandTotal" name="grandTotal"><br />
+  <label for="nameoncard">Name on Card</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.nameoncard" type="text" id="nameoncard" name="nameoncard" autocomplete="cc-name"><br
+  />
+  <label for="ccnumber">Credit Card Number</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.ccnumber" type="text" id="ccnumber" name="ccnumber" autocomplete="cc-number"
+  /><br />
+  <label for="cc-exp-month">Expiration Month</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.ccexpmonth" type="number" id="cc-exp-month" name="cc-exp-month" autocomplete="cc-exp-month"><br
+  />
+  <label for="cc-exp-year">Expiration Year</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.ccexpyear" type="number" id="cc-exp-year" name="cc-exp-year" autocomplete="cc-exp-year"><br
+  />
+  <label for="cvv2">CVV</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.ccv2" type="text" id="cvv2" name="cvv2" autocomplete="cc-csc"><br />
+  <label for="address_line1">Address Line 1</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_line1" type="text" id="address_line1" name="address_line1" autocomplete="address-line1"><br
+  />
+  <label for="address_line2">Address Line 2</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_line2" type="text" id="address_line2" name="address_line2" autocomplete="address-line2"><br
+  />
+  <label for="address_state">City</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_city" type="text" id="address_city" name="address_city" autocomplete="address-level2"><br
+  />
+  <label for="address_state">State</label>
+  <select [(ngModel)]="checkoutService.checkoutInfo.address_state" id="address_state" name="address_state" autocomplete="address_state">
+    <option *ngFor="let state of (states | async)" id="state_option_{{state.abbreviation}}" value="{{state.abbreviation}}">{{state.abbreviation}}</option>
+  </select>
+  <br />
+  
+  <div [hidden]="checkoutService.checkoutInfo.address_state != 'FL'">
+    <label for="county">County</label>
+    <!-- <input *ngIf="checkoutService.checkoutInfo.address_state != 'FL'" [formControl]="countyControl" [(ngModel)]="checkoutService.checkoutInfo.address_county" type="text" id="address_county" name="address_county" autocomplete="county"> -->
+    <select [formControl]="countyControl" [(ngModel)]="checkoutService.checkoutInfo.address_county" id="address_county" name="address_county"
+      autocomplete="county">
+    <option *ngFor="let county of (counties | async)" value="{{county}}">{{county}}</option>
+  </select>
+    <br />
+  </div>
+  
+  <label for="address_zip">Zip</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_zip" type="text" id="address_zip" name="address_zip" autocomplete="postal-code"><br
+  />
+  <label for="country">Country</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_country" type="text" id="address_country" name="address_country"
+    autocomplete="country"><br />
+  <label for="address_email">Email</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_email" type="text" id="address_email" name="address_email" autocomplete="email"><br
+  />
+  <label for="address_phone">Phone</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.address_phone" type="text" id="address_phone" name="address_phone" autocomplete="phone"><br
+  />
+  <label for="mail_class">Mail Class</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.mail_class" type="text" id="mail_class" name="mail_class" autocomplete="mail_class"><br
+  /><label for="sales_tax_rate">Sales Tax %</label>
+  <input [(ngModel)]="checkoutService.checkoutInfo.sales_tax_rate" type="text" id="sales_tax_rate" name="sales_tax_rate" autocomplete="sales_tax_rate"
+    disabled><br />
+  <button (click)="viewOrderSummary()">View Order Summary</button>
+  <button (click)="getCreditCardToken()">Submit Order</button>
+</div>

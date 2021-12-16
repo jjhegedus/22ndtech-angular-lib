@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "",
+    "module": "commonjs",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "22ndtech-angular-lib": [
+        "../lib"
+      ]
+    }
+  },
+  "exclude": [
+    "main-aot.ts"
+  ]
+}

@@ -1,0 +1,20 @@
+<div class="cart">
+    <h2>Shopping Cart</h2>
+  
+    <ul class="cart-items">
+      <li *ngFor="let cartItem of cartItems">
+        <span>{{cartItem.product.name}} ${{cartItem.product.price}} Qty:{{cartItem.quantity}} SubTotal:{{cartItem.quantity * cartItem.product.price}}</span>
+        <!-- <button (click)="removeProduct(cartItem.index)" style="font-weight:bold">X</button> -->
+        <span (click)="increaseQuantity(cartItem.index)" class="glyphicon glyphicon-plus"></span>
+        <span (click)="decreaseQuantity(cartItem.index)" class="glyphicon glyphicon-minus"></span>
+      </li>
+    </ul>
+    <span style="font-weight:bold;font-style:italic">Total Before Tax:{{checkoutService.checkoutInfo.total_before_tax}}</span><br/>
+    <span style="font-weight:bold;font-style:italic">Tax :{{checkoutService.checkoutInfo.sales_tax}}</span><br/>
+    <span style="font-weight:bold;font-style:italic">Total After Tax :{{checkoutService.checkoutInfo.total_after_tax}}</span><br/>
+    <span style="font-weight:bold;font-style:italic">Shipping :{{checkoutService.checkoutInfo.shipping_cost}}</span><br/>
+    <span style="font-weight:bold;font-style:italic">Grand Total :{{checkoutService.checkoutInfo.grand_total}}</span><br/>
+  
+    <button (click)="goBack()">Back</button>
+    <button (click)="submitOrder()">Submit Order</button>
+  </div>

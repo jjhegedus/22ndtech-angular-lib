@@ -1,0 +1,20 @@
+<div>
+    <div *ngFor="let productIndex of productIndexes" class="row">
+
+        <div class="col-xs-6 product-image-div">
+            <img id="mainImage" (click)="gotoDetail(oddProducts[productIndex].id)" src="{{oddProducts[productIndex].mainImageUrl}}" class="img-responsive center-block product-image" alt="{{oddProducts[productIndex].name}}" align="middle" /><br/>
+
+            <span class="product-name" (click)="gotoDetail(oddProducts[productIndex].id)">{{oddProducts[productIndex].name}}&nbsp;&nbsp;&nbsp;${{oddProducts[productIndex].price}}</span><br/>
+
+            <button class="buy-now-button" (click)="buyNow(oddProducts[productIndex].id)">Buy Now!</button><button class="add-to-cart-button" (click)="addToCart(oddProducts[productIndex])">Add to Cart</button>
+        </div>
+
+        <div *ngIf="evenProducts[productIndex]" class="col-xs-6 product-image-div">
+            <img id="mainImage" (click)="gotoDetail(evenProducts[productIndex].id)" src="{{evenProducts[productIndex].mainImageUrl}}" class="img-responsive center-block product-image" alt="{{evenProducts[productIndex].name}}" align="middle" /><br/>
+
+            <span class="product-name" (click)="gotoDetail(evenProducts[productIndex].id)">{{evenProducts[productIndex].name}}&nbsp;&nbsp;&nbsp;${{evenProducts[productIndex].price}}</span><br/>
+
+            <button class="buy-now-button" (click)="buyNow(evenProducts[productIndex].id)">Buy Now!</button><button class="add-to-cart-button" (click)="addToCart(evenProducts[productIndex])">Add to Cart</button>
+        </div>
+    </div>
+</div>

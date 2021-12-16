@@ -1,0 +1,33 @@
+import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import { ConfigService } from '../config/config.service';
+import { Product } from '../products/product';
+import { ProductsService } from '../products/products.service';
+import { ProductImageService } from '../products/product-image.service';
+import { CartService } from '../cart/cart.service';
+export declare class ProductImageListComponent implements OnInit {
+    private router;
+    private configService;
+    private productsService;
+    private productImageService;
+    products: Product[];
+    private oddProducts;
+    private evenProducts;
+    private productIndexes;
+    selectedProduct: Product;
+    private productImages;
+    private config;
+    cartService: CartService;
+    constructor(router: Router, configService: ConfigService, productsService: ProductsService, productImageService: ProductImageService);
+    ngOnInit(): void;
+    getProducts(): void;
+    getMainImages(): void;
+    onSelect(product: Product): void;
+    deleteProducts(product: Product): void;
+    gotoDetail(id: string): void;
+    buyNow(productId: string): void;
+    addToCart(product: Product): void;
+}

@@ -1,0 +1,14 @@
+<div>
+    <div class='container' [dragula]='"first-bag"' [dragulaModel]="productCategories">
+        <div *ngFor="let productCategory of productCategories" class="row col-xs-12 product-category-div">
+
+            <span class="product-category-name">{{productCategory.Key}}&nbsp;&nbsp;</span>
+            <button class="delete-category-button" (click)="deleteProductCategory(productCategory.Key)">X</button>
+
+        </div>
+    </div>
+
+    <button class="add-new-category-button" (click)="addProductCategory()">Add Product Category</button>
+    <button (click)="goBack()">Back</button>
+
+</div>
